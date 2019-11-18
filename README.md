@@ -15,7 +15,8 @@ OPS Wiki: https://wiki.openstreetmap.org/wiki/Main_Page
 
 # Installing dependencies
 
-Python3: https://www.python.org/downloads/
+Python3.8: https://www.python.org/downloads/
+    ***You must have Python3.8***
 
 Pip3: Should come with Python3
     Run `pip3` to check you have pip installed
@@ -33,10 +34,13 @@ VSCode will then recommend installing Pylint (which will help with autocompletio
 
 # Running server
 
-Make sure you are in the directory with `manage.py`
+From the Root Directory run `pipenv shell` which will setup the virtual environment
 
-Then run `python manage.py runserver`
+Then run `pipenv install` to install dependencies 
+
+cd into ElenaProj and run `python manage.py runserver`
 
 It should then start the dev server which you can access at http://127.0.0.1:8000/
+
 
 
