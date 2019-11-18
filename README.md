@@ -12,4 +12,12 @@ by: Temma, Eden, Danny, Janja
 
 -PipEnv: `pip install pipenv`
 
+# Running server
+
+Make sure you are in the directory with `manage.py`
+
+Then run `python manage.py runserver`
+
+It should then start the dev server which you can access at http://127.0.0.1:8000/
+
 
