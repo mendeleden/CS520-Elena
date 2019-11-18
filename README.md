@@ -13,4 +13,3 @@ by: Temma, Eden, Danny, Janja
 -PipEnv: `pip install pipenv`
 
 
-
