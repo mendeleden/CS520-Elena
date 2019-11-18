@@ -1,7 +1,16 @@
 # CS520-Elena
 EleNa Final Project for CS 520 - Fall 2019
-Edited by Temma, etc.
+by: Temma, Eden, Danny, Janja
 
 
-# Eden - first check
-# Danny - Best Check (Now on Frontend)
+# Installing dependencies
+
+-Python3: https://www.python.org/downloads/
+
+-Pip3: Should come with Python3
+    Run pip3 to check you have pip installed
+
+-PipEnv: `pip install pipenv`
+
+
+
