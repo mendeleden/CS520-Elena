@@ -15,8 +15,8 @@ OPS Wiki: https://wiki.openstreetmap.org/wiki/Main_Page
 
 # Installing dependencies
 
-Python3.8: https://www.python.org/downloads/
-    ***You must have Python3.8***
+Python3.7.3: https://www.python.org/downloads/release/python-373/
+    ***You must have Python3.7.3***
 
 Pip3: Should come with Python3
     Run `pip3` to check you have pip installed
