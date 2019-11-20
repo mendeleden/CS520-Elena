@@ -41,6 +41,13 @@ From the Root Directory run `pipenv shell` which will setup the virtual environm
 
 Then run `pipenv install` to install dependencies 
 
+From the root run `npm install` to install frontend dependencies
+
+Then run `npm run dev`
+
+Open a new terminal window to run the django server
+    (Researching a way to run both commands concurrently...)
+
 cd into ElenaProj and run `python manage.py runserver`
 
 It should then start the dev server which you can access at http://127.0.0.1:8000/

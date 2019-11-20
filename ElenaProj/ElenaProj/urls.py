@@ -17,5 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('', include('ElenaApp.urls')),
+    path('', include('frontend.urls')),
+    path('', include('ElenaApp.urls'))
 ]
