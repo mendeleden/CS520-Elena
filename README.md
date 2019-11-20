@@ -12,6 +12,9 @@ React Documenation: https://reactjs.org/docs/react-component.html
 
 OPS Wiki: https://wiki.openstreetmap.org/wiki/Main_Page
 
+Debug pipenv: https://github.com/pypa/pipenv/issues/3671
+
+
 
 # Installing dependencies
 
