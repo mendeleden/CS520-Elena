@@ -37,16 +37,16 @@ VSCode will then recommend installing Pylint (which will help with autocompletio
 
 # Running server
 
-From the Root Directory run `pipenv shell` which will setup the virtual environment
-
-Then run `pipenv install` to install dependencies 
-
 From the root run `npm install` to install frontend dependencies
 
 Then run `npm run dev`
 
 Open a new terminal window to run the django server
     (Researching a way to run both commands concurrently...)
+
+From the Root Directory run `pipenv shell` which will setup the virtual environment
+
+Then run `pipenv install` to install backend dependencies 
 
 cd into ElenaProj and run `python manage.py runserver`
 
