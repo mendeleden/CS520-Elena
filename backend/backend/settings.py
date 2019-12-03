@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'corsheaders',            # second phase
     'rest_framework',         # second phase
     'todo',                   # first phase
+    'holdon',
 ]
 
 MIDDLEWARE = [
