@@ -26,6 +26,7 @@
 // export default App;
 import React, { Component } from "react";
 import Modal from "./components/Modal";
+import Map from './components/Map';
 import axios from "axios";
 
 class App extends Component {
@@ -38,7 +39,7 @@ class App extends Component {
         description: "",
         completed: false
       },
-      todoList: []
+      todoList: [],
     };
   }
   componentDidMount() {
