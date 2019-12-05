@@ -17,6 +17,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';       // lowkey same thing as ori
 import './index.css';
 import App from './App';
 import Map from './components/Map'
+import Sidebar from './components/Sidebar'
 import * as serviceWorker from './serviceWorker';
 import mapboxgl from 'mapbox-gl';
 
@@ -47,6 +48,7 @@ class Application extends React.Component{
                 <div ref={el => this.mapContainer = el} className="mapContainer" />
 
                 <Map/>
+                <Sidebar/>
             </div>
 
         );

@@ -40,6 +40,19 @@ body {
   color: #ffffff;
 }
 
-.h1{
+h1{
   color: white;
+}
+
+.mapContainer {
+  position: absolute;
+  left: 25%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.sidebar {
+  width: 25%;
+  float: left;
 }

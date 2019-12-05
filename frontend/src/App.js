@@ -25,7 +25,7 @@
 
 // export default App;
 import React, { Component } from "react";
-import Modal from "./components/Modal";
+import Modal from "./components/Sidebar";
 import Map from './components/Map';
 import axios from "axios";
 

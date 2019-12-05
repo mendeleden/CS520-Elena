@@ -7,7 +7,7 @@ export default class Map extends Component {
     render(){
         return(
             <div>
-                <h1 color="white"> TEST</h1>
+                <h1>Check</h1>
             </div>
         );
     }
