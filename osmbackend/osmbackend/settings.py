@@ -128,3 +128,5 @@ CORS_ORIGIN_WHITELIST = [
 'http://*:3000',
 'http://*:8000',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
