@@ -125,9 +125,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = [
-'http://localhost:3000',
-'http://localhost:8000',
-'http://localhost:8080',
-'http://ec2-3-85-127-123.compute-1.amazonaws.com:8000',
-
+'http://*:3000',
+'http://*:8000',
 ]
