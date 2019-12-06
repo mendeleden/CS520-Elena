@@ -125,3 +125,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = True
+ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', 'ec2-3-85-127-123.compute-1.amazonaws.com']
