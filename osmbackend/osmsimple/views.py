@@ -16,9 +16,5 @@ def get_geocodes(request, address_from=None, address_to=None):
         'to' : address_to,
         'from_lat' : from_lat,
         'to_lat' : to_lat,
-        'name': 'Vitor',
-        'location': 'Finland',
-        'is_active': True,
-        'count': 28
     }
     return JsonResponse(data)
