@@ -45,6 +45,10 @@ def get_steps(route, dic_by_id):
         list_steps.append([dic_by_id[step]['y'], dic_by_id[step]['x']])
     return list_steps
 
+def get_elevation():
+
+    return [99, 99]
+
 def get_geocodes(request, address_from=None, address_to=None):
     print(request)
     
@@ -65,6 +69,10 @@ def get_geocodes(request, address_from=None, address_to=None):
     lat_lon_steps = get_steps(route, dic_nodeid)
     print("length of steps: ", len(lat_lon_steps))
 
+    elev = get_elevation()
+    print("total up: ")
+    print("total up: ")
+
     data = {
         'from': address_from,
         'to' : address_to,
@@ -73,6 +81,7 @@ def get_geocodes(request, address_from=None, address_to=None):
         'node_ids' : (str(start), str(end)),
         'route_nodeis' : str(route),
         'lat_lon_steps' : str(lat_lon_steps),
+        'elevation' : str(elev),
         'error' : False,
     }
     return JsonResponse(data)
