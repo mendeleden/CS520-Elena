@@ -42,7 +42,7 @@ def get_steps(route, dic_by_id):
     list_steps = []
 
     for step in route:
-        list_steps.append([dic_by_id[step]['x'], dic_by_id[step]['y']])
+        list_steps.append([dic_by_id[step]['y'], dic_by_id[step]['x']])
     return list_steps
 
 def get_geocodes(request, address_from=None, address_to=None):
