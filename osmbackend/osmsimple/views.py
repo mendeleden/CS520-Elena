@@ -8,7 +8,7 @@ import osmnx as ox
 import networkx as nx
 
 def get_graph():
-    key ="AIzaSyCLr4LXvIZlqL7D1x39-AlnvwOxz6ZafO8"
+    key ="<<put key here>>"
     print("hey")
     place_query = ['Natick, Massachusetts, USA']
     G = ox.graph_from_place(place_query, network_type='walk')
@@ -86,7 +86,6 @@ def get_geocodes(request, address_from=None, address_to=None):
     print("total up: ", elev[0])
     print("total up: ", elev[1])
     print("total change: ", elev[2])
-
     data = {
         'from': address_from,
         'to' : address_to,
