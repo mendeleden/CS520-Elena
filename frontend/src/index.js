@@ -22,6 +22,8 @@ import Sidebar from './components/Sidebar'
 import * as serviceWorker from './serviceWorker';
 import mapboxgl from 'mapbox-gl';
 import axios from 'axios';
+import LocationSearch from './components/LocationSearch';
+import LocationTo from './components/LocationTo';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHNhbmF0YXIiLCJhIjoiY2szcm81eTlpMGVndjNja2l5cGtobnRuMyJ9.0c8156xZy5h97w6Uq-f8wg';
 
@@ -66,6 +68,8 @@ class Application extends React.Component{
             <div>
                 <div ref={el => this.mapContainer = el} className="mapContainer" />
                 <Button onClick={() => this.getRoute()}>Test</Button>
+                <LocationTo />
+                <LocationSearch />
                 <Map/>
                 <Sidebar/>
             </div>
