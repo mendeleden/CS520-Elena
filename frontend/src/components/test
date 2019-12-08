@@ -1,0 +1,83 @@
+mapboxgl.accessToken = 'pk.eyJ1IjoiZHNhbmF0YXIiLCJhIjoiY2szcm81eTlpMGVndjNja2l5cGtobnRuMyJ9.0c8156xZy5h97w6Uq-f8wg';
+
+class Application extends React.Component{
+    constructor(props){
+        super(props);
+        this.map = null;
+        this.state = {
+            lng: 5,
+            lat: 34,
+            zoom: 2
+        }
+    }
+
+    componentDidMount() {
+        this.map = new mapboxgl.Map({
+            container: this.mapContainer,
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: [this.state.lng, this.state.lat],
+            zoom: this.state.zoom
+        });
+    }
+
+    setRoute(res){
+        this.setState({ lng: res.data.from_lat[1], lat: res.data.from_lat[0], zoom: 14});
+        // zoom is hard coded rn
+        // we might want to write a function that calculates how zoomed it should be
+        // based on the two points
+        
+        this.map.addLayer({
+            'id': 'lines',
+            'type': 'line',
+            'source': {
+            'type': 'geojson',
+            'data': {
+            'type': 'FeatureCollection',
+            'features': [{
+            'type': 'Feature',
+            'properties': {
+            'color': '#F7455D' // red
+            },
+            'geometry': {
+            'type': 'LineString',
+            'coordinates': [
+            [this.lat, this.lng],
+            [this.lat+1, this.lng+1]
+            ]
+            }
+            }]
+            }
+            },
+            'paint': {
+            'line-width': 10,
+            // Use a get expression (https://docs.mapbox.com/mapbox-gl-js/style-spec/#expressions-get)
+            // to set the line-color to a feature property value.
+            'line-color': ['get', 'color']
+            }
+
+        });
+            console.log('here')
+        this.componentDidMount();
+    }
+
+    getRoute(){
+        axios
+        .get("http://ec2-3-85-127-123.compute-1.amazonaws.com:8000/simple/route/216,%20Pond%20Street,%20Natick,%20Massachusetts,%2001760,%20United%20States/14,%20Mill%20Street,%20Natick,%20Massachusetts,%2001760,%20United%20States")
+        .then(res => this.setRoute(res))
+        .catch(err => console.log(err));
+    }
+
+
+    render(){
+        return(
+            <div>
+                <div ref={el => this.mapContainer = el} className="mapContainer" />
+                <Button onClick={() => this.getRoute()}>Test</Button>
+                <LocationSearch />
+                <Map/>
+                <Sidebar/>
+            </div>
+
+        );
+    }
+}
