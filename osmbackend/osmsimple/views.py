@@ -47,7 +47,7 @@ def get_steps(route, dic_by_id, origin, destination):
     return list_steps
 
 def get_midpoint(origin, destination):
-    return ((origin[0] + destination[0])/2, (origin[1] + destination[1])/2)
+    return ([(origin[0] + destination[0])/2, (origin[1] + destination[1])/2])
 
 def get_elevation(route, dic_by_id):
     list_elv = []
