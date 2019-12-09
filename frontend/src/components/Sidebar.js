@@ -6,12 +6,15 @@ import {
     Input,
     Label
 } from "reactstrap";
+import axios from 'axios';
 
 export default class Sidebar extends Component {
     constructor(props) {
     super(props);
     this.state = {
-    
+        address_from: "",
+        address_to: "",
+        route_opt: ""
     };
     }
     handleChange = e => {
@@ -20,6 +23,14 @@ export default class Sidebar extends Component {
         value = e.target.checked;
     }
     };
+
+    submitRoute(){
+        axios
+        .get("http://ec2-3-85-127-123.compute-1.amazonaws.com:8000/simple/route/216,%20Pond%20Street,%20Natick,%20Massachusetts,%2001760,%20United%20States/14,%20Mill%20Street,%20Natick,%20Massachusetts,%2001760,%20United%20States")
+        .then(res => this.setRoute(res))
+        .catch(err => console.log(err));
+    } 
+
     render() {
         const { toggle, onSave } = this.props;
         return (
@@ -53,7 +64,7 @@ export default class Sidebar extends Component {
                         onChange={this.handleChange}
                     />
                 </FormGroup>
-                <Button color="success" onClick={() => onSave(this.state.activeItem)}>
+                <Button color="success">
                 Go
                 </Button>
             </Form>
