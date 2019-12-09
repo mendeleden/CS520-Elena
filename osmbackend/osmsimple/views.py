@@ -38,11 +38,12 @@ def convert_g_dic(G):
 
     return dict_by_id
 
-def get_steps(route, dic_by_id):
+def get_steps(route, dic_by_id, origin, destination):
     list_steps = []
-
+    list_steps.append(origin)
     for step in route:
         list_steps.append([dic_by_id[step]['y'], dic_by_id[step]['x']])
+    list_steps.append(destination)
     return list_steps
 
 def get_midpoint(origin, destination):
@@ -67,7 +68,7 @@ def get_elevation(route, dic_by_id):
 
 def get_geocodes(request, address_from=None, address_to=None):
     print(request)
-    
+
     origin = geo_address("216, Pond Street, Natick, Massachusetts, 01760, USA")
     destination = geo_address("14, Mill Street, Natick, Massachusetts, 01760, USA")
     
@@ -77,14 +78,14 @@ def get_geocodes(request, address_from=None, address_to=None):
     start = ox.get_nearest_node(G, origin)
     end = ox.get_nearest_node(G, destination)
 
-    mid_point = get_midpoint(start, end)
+    midpoint = get_midpoint(origin, destination)
 
     route = get_route(G, start, end)
     print("len of route: ", len(route))
 
     dic_nodeid = convert_g_dic(G)
 
-    lat_lon_steps = get_steps(route, dic_nodeid)
+    lat_lon_steps = get_steps(route, dic_nodeid, origin, destination)
     print("length of steps: ", len(lat_lon_steps))
 
     elev = get_elevation(route, dic_nodeid)
@@ -100,7 +101,7 @@ def get_geocodes(request, address_from=None, address_to=None):
         'route_nodeis' : str(route),
         'lat_lon_steps' : str(lat_lon_steps),
         'elevation' : str(elev),
-        'mid_point' : str(mid_point),
+        'midpoint' : str(midpoint),
         'error' : False,
     }
     return JsonResponse(data)
