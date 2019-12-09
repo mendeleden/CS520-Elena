@@ -68,7 +68,6 @@ class Application extends React.Component{
             <div>
                 <div ref={el => this.mapContainer = el} className="mapContainer" />
                 <Button onClick={() => this.getRoute()}>Test</Button>
-                <LocationTo />
                 <LocationSearch />
                 <Map/>
                 <Sidebar/>
