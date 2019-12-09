@@ -40,10 +40,10 @@ def convert_g_dic(G):
 
 def get_steps(route, dic_by_id, origin, destination):
     list_steps = []
-    list_steps.append([origin[0], origin[1]])
+    list_steps.append([origin[1], origin[0]])
     for step in route:
-        list_steps.append([dic_by_id[step]['y'], dic_by_id[step]['x']])
-    list_steps.append([destination[0],destination[1]])
+        list_steps.append([dic_by_id[step]['x'], dic_by_id[step]['y']])
+    list_steps.append([destination[1],destination[0]])
     return list_steps
 
 def get_midpoint(origin, destination):
