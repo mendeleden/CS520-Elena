@@ -8,40 +8,34 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 
-export default function LocationSearch() {
+export default function LocationSearch(props) {
+
   const [addressTo, setAddressTo] = React.useState("");
-  const [coordinatesTo, setCoordinatesTo] = React.useState({
-    lat: null,
-    lng: null
-  });
 
   const [addressFrom, setAddressFrom] = React.useState("");
-  const [coordinatesFrom, setCoordinatesFrom] = React.useState({
-    lat: null,
-    lng: null
-  });
 
   const handleSelect = async value => {
-    const results = await geocodeByAddress(value);
-    const latLng = await getLatLng(results[0]);
     setAddressTo(value);
-    setCoordinatesTo(latLng);
   };
 
   const handleSelectF = async value => {
-    const results = await geocodeByAddress(value);
-    const latLng = await getLatLng(results[0]);
     setAddressFrom(value);
-    setCoordinatesFrom(latLng);
   };
 
-  function setRoute() {
+  function getData(res){
+    var coordList = res.data
+    return res
+  }
 
+  function setRoute() {
+    var dict = {}
     var uri = encodeURI("http://ec2-3-85-127-123.compute-1.amazonaws.com:8000/simple/route/ " + addressTo + "/" + addressFrom);
-    console.log(uri)
+    // console.log(uri)
     axios
     .get(uri)
-    .then(res => res.data.from_lat[1]);
+    .then(res => { dict = res.data } )
+    console.log('from search' + dict)
+    return dict
     }
 
   return (
@@ -77,7 +71,6 @@ export default function LocationSearch() {
             )}
         </PlacesAutocomplete>
 
-        { console.log(coordinatesTo.lat)}
 
         <PlacesAutocomplete
             value={addressFrom}
@@ -107,7 +100,7 @@ export default function LocationSearch() {
             </div>
             )}
         </PlacesAutocomplete>
-        <Button onClick={setRoute}> Go </Button>
+        <Button onClick={(evt) => props.func(setRoute())}> Go </Button>
     </form>
     </div>
   );

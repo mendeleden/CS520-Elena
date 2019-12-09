@@ -46,7 +46,7 @@ h1{
 
 .mapContainer {
   position: absolute;
-  left: 25%;
+  width: 100%;
   top: 0;
   bottom: 0;
   right: 0;

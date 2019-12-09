@@ -5,14 +5,26 @@ import Map from "./components/Map"
 import LocationSearch from './components/LocationSearch';
 import Sidebar from './components/Sidebar'
 
-function App() {
-  return (
-    <div className="App">
-      <Map />
-      <Sidebar />
-      <LocationSearch />
-    </div>
-  );
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      test: ""
+    }
+  }
+
+  output(evt){
+    console.log(evt)
+    }
+
+  
+  render(){
+    return (
+      <div className="App">
+        <LocationSearch func={this.output}/>
+      </div>
+    );
+  }
 }
 
 export default App;
