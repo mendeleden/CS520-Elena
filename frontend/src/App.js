@@ -13,9 +13,12 @@ class App extends React.Component {
     }
   }
 
-  output(evt){
-    console.log(evt)
+  async output(evt){
+    let test = await evt
+    console.log("From app js")
+    evt.then(res=>{console.log('in app'); console.log(res.data.elevation)})
     }
+
 
   
   render(){

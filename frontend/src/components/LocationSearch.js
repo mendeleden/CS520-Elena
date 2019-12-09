@@ -24,18 +24,15 @@ export default function LocationSearch(props) {
 
   function getData(res){
     var coordList = res.data
-    return res
   }
 
-  function setRoute() {
-    var dict = {}
+  async function setRoute() {
+
     var uri = encodeURI("http://ec2-3-85-127-123.compute-1.amazonaws.com:8000/simple/route/ " + addressTo + "/" + addressFrom);
-    // console.log(uri)
-    axios
-    .get(uri)
-    .then(res => { dict = res.data } )
-    console.log('from search' + dict)
-    return dict
+    console.log(uri)
+    const req = axios.get(uri)
+    return req
+    .then(res => {console.log('inside req'); return res})
     }
 
   return (
