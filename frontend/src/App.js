@@ -9,6 +9,8 @@ function App() {
   return (
     <div className="App">
       <Map />
+      <Sidebar />
+      <LocationSearch />
     </div>
   );
 }
