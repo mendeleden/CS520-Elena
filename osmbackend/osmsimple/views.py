@@ -45,6 +45,9 @@ def get_steps(route, dic_by_id):
         list_steps.append([dic_by_id[step]['y'], dic_by_id[step]['x']])
     return list_steps
 
+def get_midpoint(origin, destination):
+    return ((origin[0] + destination[0])/2, (origin[1] + destination[1])/2)
+
 def get_elevation(route, dic_by_id):
     list_elv = []
     for step in route:
@@ -74,6 +77,8 @@ def get_geocodes(request, address_from=None, address_to=None):
     start = ox.get_nearest_node(G, origin)
     end = ox.get_nearest_node(G, destination)
 
+    mid_point = get_midpoint(start, end)
+
     route = get_route(G, start, end)
     print("len of route: ", len(route))
 
@@ -95,6 +100,7 @@ def get_geocodes(request, address_from=None, address_to=None):
         'route_nodeis' : str(route),
         'lat_lon_steps' : str(lat_lon_steps),
         'elevation' : str(elev),
+        'mid_point' : str(mid_point),
         'error' : False,
     }
     return JsonResponse(data)
