@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -9,40 +8,97 @@ import {
 } from "reactstrap";
 import axios from 'axios';
 
-class C extends React.Component {
-    constructor(props) {
-      super(props) 
-      console.log(this.props.name) // nnamdi
+export default function LocationSearch(props) {
 
+  const [addressTo, setAddressTo] = React.useState("");
 
-    }
-  
-    handleSelect = async value => {
-        this.setAddressTo(value);
-    };
-    
-    handleSelectF = async value => {
-        this.setAddressFrom(value);
-    };
+  const [addressFrom, setAddressFrom] = React.useState("");
 
-    gen_values() {
-        this.setRoute.then(res => { console.log(res)})
-        return [42.27822345, -71.37579087084606];
-      }
+  const handleSelect = async value => {
+    setAddressTo(value);
+  };
 
-    render() {
-        return (
-            <div>
-                C component
-                <button onClick={
-                  (evt) => 
-                    this.props.func(this.gen_values())
-                  }>
-                  Send To Parent
-                </button>
-            </div>
-        )
-    }
+  const handleSelectF = async value => {
+    setAddressFrom(value);
+  };
+
+  function getData(res){
+    var coordList = res.data
   }
 
-export default C;
+  async function setRoute() {
+
+    var uri = encodeURI("http://ec2-3-85-127-123.compute-1.amazonaws.com:8000/simple/route/ " + addressTo + "/" + addressFrom);
+    console.log(uri)
+    const req = axios.get(uri)
+    return req
+    .then(res => {console.log('inside req'); return res})
+    }
+
+  return (
+    <div>
+
+    <form>
+        <PlacesAutocomplete
+            value={addressTo}
+            onChange={setAddressTo}
+            onSelect={handleSelect}
+        >
+            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            <div>
+
+                <input {...getInputProps({ placeholder: "Address To" })} />
+
+                <div>
+                {loading ? <div>...loading</div> : null}
+
+                {suggestions.map(suggestion => {
+                    const style = {
+                    backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
+                    };
+
+                    return (
+                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                        {suggestion.description}
+                    </div>
+                    );
+                })}
+                </div>
+            </div>
+            )}
+        </PlacesAutocomplete>
+
+
+        <PlacesAutocomplete
+            value={addressFrom}
+            onChange={setAddressFrom}
+            onSelect={handleSelectF}
+        >
+            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            <div>
+
+                <input {...getInputProps({ placeholder: "Address From" })} />
+
+                <div>
+                {loading ? <div>...loading</div> : null}
+
+                {suggestions.map(suggestion => {
+                    const style = {
+                    backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
+                    };
+
+                    return (
+                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                        {suggestion.description}
+                    </div>
+                    );
+                })}
+                </div>
+            </div>
+            )}
+        </PlacesAutocomplete>
+        <Button onClick={(evt) => props.func(setRoute())}> Go </Button>
+    </form>
+    </div>
+  );
+}
