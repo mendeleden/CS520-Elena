@@ -69,8 +69,8 @@ def get_elevation(route, dic_by_id):
 def get_geocodes(request, address_from=None, address_to=None):
     print(request)
 
-    origin = geo_address("216, Pond Street, Natick, Massachusetts, 01760, USA")
-    destination = geo_address("14, Mill Street, Natick, Massachusetts, 01760, USA")
+    origin = geo_address(address_from)
+    destination = geo_address(address_to)
     
     print("loading graph")
     G = load_graph()
