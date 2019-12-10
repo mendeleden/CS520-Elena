@@ -6,6 +6,7 @@ from django.db.models import Q
 
 import osmnx as ox
 import networkx as nx
+import math
 
 global G
 is_graph_loaded = False
@@ -31,9 +32,30 @@ def load_graph():
 def geo_address(address):
     return ox.geocode(address)
 
-def get_route(G, start, end):
-    route_by_length = nx.shortest_path(G, source=start, target=end, weight='length')
-    return route_by_length
+def minimize(length, grade):
+    penalty = grade ** 2
+    return length * penalty
+
+def maximize(length, grade):
+    penalty = math.sqrt(grade)
+    return length * penalty
+
+def get_route(G, start, end, min_max):
+    
+    for u, v, k, data in G.edges(keys=True, data=True):
+        data['minimize'] = minimize(data['length'], float(data['grade_abs']))
+        data['maximize'] = maximize(data['length'], float(data['grade_abs']))
+        data['rise'] = data['length'] * float(data['grade'])
+
+
+    if min_max == "min":
+        route = nx.shortest_path(G, source=start, target=end, weight='minimize')
+    else:
+        route = nx.shortest_path(G, source=start, target=end, weight='maximize')
+
+    return route
+    # route_by_length = nx.shortest_path(G, source=start, target=end, weight='length')
+    # return route_by_length
 
 def convert_g_dic(G):
     nodes, data = zip(*G.nodes(data=True))
@@ -92,7 +114,7 @@ def get_geocodes(request, address_from=None, address_to=None, min_max=None):
 
     midpoint = get_midpoint(origin, destination)
 
-    route = get_route(G, start, end)
+    route = get_route(G, start, end, min_max)
     print("len of route: ", len(route))
 
     dic_nodeid = convert_g_dic(G)
