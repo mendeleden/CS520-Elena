@@ -3,13 +3,10 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-import {
-    Button,
-} from "reactstrap";
-import axios from 'axios';
+import { Button } from "reactstrap";
+import axios from "axios";
 
 export default function LocationSearch(props) {
-
   const [addressTo, setAddressTo] = React.useState("");
 
   const [addressFrom, setAddressFrom] = React.useState("");
@@ -22,83 +19,98 @@ export default function LocationSearch(props) {
     setAddressFrom(value);
   };
 
-  function getData(res){
-    var coordList = res.data
+  function getData(res) {
+    var coordList = res.data;
   }
 
   async function setRoute() {
-
-    var uri = encodeURI("http://ec2-3-85-127-123.compute-1.amazonaws.com:8000/simple/route/ " + addressTo + "/" + addressFrom);
-    console.log(uri)
-    const req = axios.get(uri)
-    return req
-    .then(res => {console.log('inside req'); return res})
-    }
+    var uri = encodeURI(
+      "http://ec2-3-85-127-123.compute-1.amazonaws.com:8000/simple/route/ " +
+        addressTo +
+        "/" +
+        addressFrom
+    );
+    console.log(uri);
+    const req = axios.get(uri);
+    return req.then(res => {
+      console.log("inside req");
+      return res;
+    });
+  }
 
   return (
-    <div>
-
-    <form>
+    <div className="inputs">
+      <h2>Route Options:</h2>
+      <form>
         <PlacesAutocomplete
-            value={addressTo}
-            onChange={setAddressTo}
-            onSelect={handleSelect}
+          value={addressTo}
+          onChange={setAddressTo}
+          onSelect={handleSelect}
         >
-            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading
+          }) => (
             <div>
+              <h3>To: </h3>
+              <input {...getInputProps({ placeholder: "Address To" })} />
 
-                <input {...getInputProps({ placeholder: "Address To" })} />
-
-                <div>
+              <div>
                 {loading ? <div>...loading</div> : null}
 
                 {suggestions.map(suggestion => {
-                    const style = {
+                  const style = {
                     backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
-                    };
+                  };
 
-                    return (
+                  return (
                     <div {...getSuggestionItemProps(suggestion, { style })}>
-                        {suggestion.description}
+                      {suggestion.description}
                     </div>
-                    );
+                  );
                 })}
-                </div>
+              </div>
             </div>
-            )}
+          )}
         </PlacesAutocomplete>
 
-
         <PlacesAutocomplete
-            value={addressFrom}
-            onChange={setAddressFrom}
-            onSelect={handleSelectF}
+          value={addressFrom}
+          onChange={setAddressFrom}
+          onSelect={handleSelectF}
         >
-            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading
+          }) => (
             <div>
+              <h3>From: </h3>
+              <input {...getInputProps({ placeholder: "Address From" })} />
 
-                <input {...getInputProps({ placeholder: "Address From" })} />
-
-                <div>
+              <div>
                 {loading ? <div>...loading</div> : null}
 
                 {suggestions.map(suggestion => {
-                    const style = {
+                  const style = {
                     backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
-                    };
+                  };
 
-                    return (
+                  return (
                     <div {...getSuggestionItemProps(suggestion, { style })}>
-                        {suggestion.description}
+                      {suggestion.description}
                     </div>
-                    );
+                  );
                 })}
-                </div>
+              </div>
             </div>
-            )}
+          )}
         </PlacesAutocomplete>
-        <Button onClick={(evt) => props.func(setRoute())}> Go </Button>
-    </form>
+        <Button className="submit" onClick={evt => props.func(setRoute())}> Go </Button>
+      </form>
     </div>
   );
 }

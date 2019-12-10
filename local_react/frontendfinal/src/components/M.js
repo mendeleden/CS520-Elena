@@ -104,10 +104,10 @@ class M extends React.Component {
                <br />
                mid_lon : {this.props.mid_lon} || { this.state.lng}
 
-               <div className="inline-block absolute top left mt12 ml12 bg-darken75 color-white z1 py6 px12 round-full txt-s txt-bold">
+               <div>
                 <div>{`Longitude: ${lng} Latitude: ${lat} Zoom: ${zoom}`}</div>
                 </div>
-                <div ref={el => this.mapContainer = el} className="absolute top right left bottom" />
+                <div ref={el => this.mapContainer = el} className="mapLayer" />
           </div>
       )
   }

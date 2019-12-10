@@ -76,13 +76,7 @@ class Sidebar extends Component {
                         onChange={this.handleChange}
                     />
                 </FormGroup>
-                <Button
-                    style={{
-                        width: "150px",
-                        borderRadius: "3px",
-                        letterSpacing: "1.5px",
-                        marginTop: "1rem"
-                    }}
+                <Button type="submit">
                     onClick={this.onsearchClick}>
                     Go
                 </Button>
