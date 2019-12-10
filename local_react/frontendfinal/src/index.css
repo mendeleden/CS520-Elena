@@ -1,0 +1,127 @@
+/* Trying to get responsive design to work but it's not working
+@media only screen and (max-width: 1000px) {
+  .mapLayer {
+    display: inline-block;
+  }
+
+  .inputs {
+    width: 100%;
+  }
+}
+*/
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.mapLayer {
+  position: absolute;
+  left: 25%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.inputs {
+  float: left;
+  width: 25%;
+  margin: 10px;
+}
+
+.details {
+  float: bottom;
+  width: 25%;
+  margin: 10px;
+}
+
+.inputs h2 {
+  color: white;
+  font-size: 24px;
+  margin: 10px 0px 20px;
+  text-decoration: underline;
+}
+
+.inputs h3 {
+  color: white;
+  font-size: 18px;
+  margin: 10px 0px;
+}
+.inputs input[type=text] {
+  width: 90%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.submit {
+  width: 90%;
+  background-color: #4CAF50;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit {
+  background-color: #45a049;
+}
+
+
+.inputs .radio-toolbar {
+  width: 90%;
+}
+
+/* Code for nice radio buttons here - can't get them to stay checked
+.inputs .radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;
+}
+*/
+
+.inputs .radio-toolbar label {
+    display: inline-block;
+    background-color: #ddd;
+    padding: 10px 4px 10px 35px;
+    font-size: 16px;
+    border: 2px solid #444;
+    border-radius: 4px;
+    width: 35%;
+    margin-top: 20px;
+}
+
+.inputs .radio-toolbar label:hover {
+  background-color: #ABEBC6;
+}
+
+.inputs .radio-toolbar input[type="radio"]:focus + label {
+    border: 2px dashed #444;
+}
+
+.inputs .radio-toolbar input[type="radio"]:checked + label {
+    background-color: #ABEBC6;
+    border-color: #4c4;
+}
+
+.inputs button {
+  margin: 20px 0px;
+}
