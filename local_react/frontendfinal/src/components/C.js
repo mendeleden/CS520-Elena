@@ -25,7 +25,7 @@ export default function LocationSearch(props) {
 
   async function setRoute() {
     var uri = encodeURI(
-      "http://ec2-3-85-127-123.compute-1.amazonaws.com:8000/simple/route/ " +
+      "http://ec2-52-90-226-146.compute-1.amazonaws.com:8000/simple/route/ " +
         addressTo +
         "/" +
         addressFrom
