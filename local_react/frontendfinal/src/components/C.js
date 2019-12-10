@@ -1,4 +1,6 @@
 import React from "react";
+import {ButtonToolbar, ToggleButton, ToggleButtonGroup } from 'react-bootstrap';
+
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -10,6 +12,8 @@ export default function LocationSearch(props) {
   const [addressTo, setAddressTo] = React.useState("");
 
   const [addressFrom, setAddressFrom] = React.useState("");
+
+  let min_max_var = "max"
 
   const handleSelect = async value => {
     setAddressTo(value);
@@ -23,12 +27,26 @@ export default function LocationSearch(props) {
     var coordList = res.data;
   }
 
+  function handleToggle(e) {
+      console.log("toggle changed", min_max_var)
+      console.log(e)
+      if (e == 1) {
+        min_max_var = "max"
+      }
+      else {
+        min_max_var = "min"
+      }
+      console.log("value after : ", min_max_var)
+      
+  }
   async function setRoute() {
     var uri = encodeURI(
       "http://ec2-52-90-226-146.compute-1.amazonaws.com:8000/simple/route/ " +
         addressTo +
         "/" +
-        addressFrom
+        addressFrom +
+        "/" +
+        min_max_var
     );
     console.log(uri);
     const req = axios.get(uri);
@@ -109,6 +127,13 @@ export default function LocationSearch(props) {
             </div>
           )}
         </PlacesAutocomplete>
+        <ButtonToolbar>
+            <ToggleButtonGroup type="radio" name="options" defaultValue={1} onChange={handleToggle}>
+                <ToggleButton value={1}>Min</ToggleButton>
+                <ToggleButton value={2}>Max</ToggleButton>
+            </ToggleButtonGroup>
+
+        </ButtonToolbar>
         <Button className="submit" onClick={evt => props.func(setRoute())}> Go </Button>
       </form>
     </div>
