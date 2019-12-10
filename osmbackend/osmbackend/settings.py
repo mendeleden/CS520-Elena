@@ -145,4 +145,9 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
 ]
+CORS_ORIGIN_WHITELIST = (
+    'localhost:8000',
+    'http://localhost:3000',
+    'localhost'
+)
 ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', 'ec2-3-85-127-123.compute-1.amazonaws.com', '3.85.127.123', 'ec2-52-90-226-146.compute-1.amazonaws.com']
