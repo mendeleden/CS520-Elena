@@ -7,6 +7,9 @@ from django.db.models import Q
 import osmnx as ox
 import networkx as nx
 
+global G
+is_graph_loaded = False
+
 def get_graph():
     key ="<<put key here>>"
     print("hey")
@@ -19,8 +22,11 @@ def get_graph():
     print("done")
 
 def load_graph():
-    G = ox.load_graphml('natick.graphml')
-    return G
+    print("From graph loader")
+    global G
+    G = ox.load_graphml('eastern-ma-network.graphml')
+    # return G
+    # return None
 
 def geo_address(address):
     return ox.geocode(address)
@@ -72,9 +78,15 @@ def get_geocodes(request, address_from=None, address_to=None):
     origin = geo_address(address_from)
     destination = geo_address(address_to)
     
-    print("loading graph")
-    G = load_graph()
-    
+    global is_graph_loaded
+    print("From main : ", is_graph_loaded)
+    if is_graph_loaded == False:
+        print("Graph isn't loaded --> Loading it")
+        load_graph()
+        is_graph_loaded = True
+    else:
+        print("Graph is loaded")
+    global G
     start = ox.get_nearest_node(G, origin)
     end = ox.get_nearest_node(G, destination)
 
