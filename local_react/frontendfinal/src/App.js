@@ -5,6 +5,7 @@ import './App.css';
 // import Sidebar from "./components/Sidebar"
 import M from "./components/M"
 import LocationSearch from "./components/C"
+import G from "./components/G"
 
 // class M extends React.Component {
 //   constructor(props) {
@@ -30,7 +31,8 @@ class App extends React.Component {
       data: 0,
       lng: -122.48383155304096,
       lat: 37.82882682974591,
-      steps : []
+      steps : [],
+      elevation : [],
     }
   }
   
@@ -42,7 +44,14 @@ class App extends React.Component {
       console.log(res.data.midpoint_lat);
       console.log(res.data.midpoint_lon);
       console.log(res.data.lat_lon_steps);
-      this.setState({lng: res.data.midpoint_lon, lat:res.data.midpoint_lat, steps : res.data.lat_lon_steps})
+      console.log(res.data.elevation);
+      
+      this.setState({
+        lng: res.data.midpoint_lon,
+        lat:res.data.midpoint_lat, 
+        steps : res.data.lat_lon_steps,
+        elevation : res.data.elevation,
+      })
     })
   }
   // output(evt) {
@@ -60,6 +69,8 @@ class App extends React.Component {
               mid_lon={this.state.lng}
               steps = {this.state.steps}
               />
+            
+            <G elevation={this.state.elevation} />
           </div>
       )
   }
