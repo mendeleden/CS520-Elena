@@ -126,4 +126,23 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
 ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1', 'ec2-3-85-127-123.compute-1.amazonaws.com', '3.85.127.123', 'ec2-52-90-226-146.compute-1.amazonaws.com']
