@@ -13,7 +13,7 @@ export default function LocationSearch(props) {
 
   const [addressFrom, setAddressFrom] = React.useState("");
 
-  let min_max_var = "max"
+  let min_max_var = "min"
 
   const handleSelect = async value => {
     setAddressTo(value);
@@ -30,11 +30,11 @@ export default function LocationSearch(props) {
   function handleToggle(e) {
       console.log("toggle changed", min_max_var)
       console.log(e)
-      if (e == 1) {
-        min_max_var = "max"
+      if (e === 1) {
+        min_max_var = "min"
       }
       else {
-        min_max_var = "min"
+        min_max_var = "max"
       }
       console.log("value after : ", min_max_var)
       
@@ -60,6 +60,39 @@ export default function LocationSearch(props) {
     <div className="inputs">
       <h2>Route Options:</h2>
       <form>
+      <PlacesAutocomplete
+          value={addressFrom}
+          onChange={setAddressFrom}
+          onSelect={handleSelectF}
+        >
+          {({
+            getInputProps,
+            suggestions,
+            getSuggestionItemProps,
+            loading
+          }) => (
+            <div>
+              <h3>From: </h3>
+              <input {...getInputProps({ placeholder: "Address From" })} />
+
+              <div>
+                {loading ? <div>...loading</div> : null}
+
+                {suggestions.map(suggestion => {
+                  const style = {
+                    backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
+                  };
+
+                  return (
+                    <div {...getSuggestionItemProps(suggestion, { style })}>
+                      {suggestion.description}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
         <PlacesAutocomplete
           value={addressTo}
           onChange={setAddressTo}
@@ -93,41 +126,7 @@ export default function LocationSearch(props) {
             </div>
           )}
         </PlacesAutocomplete>
-
-        <PlacesAutocomplete
-          value={addressFrom}
-          onChange={setAddressFrom}
-          onSelect={handleSelectF}
-        >
-          {({
-            getInputProps,
-            suggestions,
-            getSuggestionItemProps,
-            loading
-          }) => (
-            <div>
-              <h3>From: </h3>
-              <input {...getInputProps({ placeholder: "Address From" })} />
-
-              <div>
-                {loading ? <div>...loading</div> : null}
-
-                {suggestions.map(suggestion => {
-                  const style = {
-                    backgroundColor: suggestion.active ? "#41b6e6" : "#fff"
-                  };
-
-                  return (
-                    <div {...getSuggestionItemProps(suggestion, { style })}>
-                      {suggestion.description}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          )}
-        </PlacesAutocomplete>
-        <ButtonToolbar>
+        <ButtonToolbar className="radio-toolbar">
             <ToggleButtonGroup type="radio" name="options" defaultValue={1} onChange={handleToggle}>
                 <ToggleButton value={1}>Min</ToggleButton>
                 <ToggleButton value={2}>Max</ToggleButton>
