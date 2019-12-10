@@ -4,5 +4,5 @@ from .views import (
     get_geocodes,
 )
 urlpatterns = [
-    path('/route/<str:address_from>/<str:address_to>', get_geocodes, name="get_route"),
+    path('/route/<str:address_from>/<str:address_to>/<str:min_max>', get_geocodes, name="get_route"),
 ]

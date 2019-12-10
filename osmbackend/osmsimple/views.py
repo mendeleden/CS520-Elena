@@ -72,9 +72,9 @@ def get_elevation(route, dic_by_id):
             total_down += float(list_elv[i])- float(list_elv[i-1])  
     return [total_up, total_down, total_elv]
 
-def get_geocodes(request, address_from=None, address_to=None):
+def get_geocodes(request, address_from=None, address_to=None, min_max=None):
     print(request)
-
+    print("this request wants route with--->>>", min_max)
     origin = geo_address(address_from)
     destination = geo_address(address_to)
     
