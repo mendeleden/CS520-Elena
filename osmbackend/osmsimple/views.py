@@ -134,7 +134,7 @@ def get_geocodes(request, address_from=None, address_to=None, min_max=None):
         'node_ids' : (str(start), str(end)),
         'route_nodeis' : str(route),
         'lat_lon_steps' : lat_lon_steps,
-        'elevation' : str(elev),
+        'elevation' : elev,
         'midpoint_lat' : str(midpoint[0]),
         'midpoint_lon' : str(midpoint[1]),
         'error' : False,
