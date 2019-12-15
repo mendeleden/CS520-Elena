@@ -34,3 +34,8 @@ Project By: Danny Sanatar, Eden Mendel, Janja Kovacevic, Temma Eventov
     * Region : us-east-1
     * ec2 instance type : t2.large
 
+
+## Set-up instructions:
+  * [Deploy on AWS](https://github.com/mendeleden/CS520-Elena/tree/master/cloud)
+  * [Deploy on local machine](https://github.com/mendeleden/CS520-Elena/tree/master/local)
+
