@@ -35,10 +35,11 @@ Our web application is a fully functional routing software that allows users to 
   * Back-End: http://ec2-52-90-226-146.compute-1.amazonaws.com:8000/simple/route
     * Region : us-east-1
     * ec2 instance type : t2.large
-    * (This link will require you to add "/[address1]/[address2]"
+    * This link will require you to add "/[address1]/[address2]/['min' or 'max']"
 
 
 ## Set-up instructions:
   * [Deploy on AWS](https://github.com/mendeleden/CS520-Elena/tree/master/cloud)
   * [Deploy on local machine](https://github.com/mendeleden/CS520-Elena/tree/master/local)
+  * The only difference between the folders is which url (localhost or aws instance) the frontend will pull data from
 
