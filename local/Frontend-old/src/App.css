@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+
+#left {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 10%;
+  margin: -100px 0 0 -150px;
+}
+
+#leftup {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 50%;
+  left: 30%;
+  margin: -100px 0 0 -150px;
+}
+
+#bottom {
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  z-index: 15;
+  top: 90%;
+  left: 30%;
+  margin: -100px 0 0 -150px;
+}
