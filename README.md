@@ -2,10 +2,10 @@
 
 Project By: Danny Sanatar, Eden Mendel, Janja Kovacevic, Temma Eventov
 
-*** Insert General Description Here ***
+*** What Makes Our EleNa Special ***
 
-  -What it does
-  -Why it is unique
+  - Containers : the backend, which provides the routing services is built inside a container which allow it to be scalable.
+  - Fast Routing : By elevating Python's global variables and Django capabilities the backend server only needs to load the graph into memory once (slow), but once loaded into memory is able to serve routing requests very quickly.
 
 
 # Technology Stack
