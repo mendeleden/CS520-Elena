@@ -32,7 +32,7 @@ Our web application is a fully functional routing software that allows users to 
   * Front-End : http://ec2-34-203-209-61.compute-1.amazonaws.com:3000/
     * Region : us-east-1
     * ec2 instance type : t2.medium
-  * Back-End: http://ec2-52-90-226-146.compute-1.amazonaws.com:8000/
+  * Back-End: http://ec2-52-90-226-146.compute-1.amazonaws.com:8000/simple/route
     * Region : us-east-1
     * ec2 instance type : t2.large
 
