@@ -28,16 +28,12 @@ export default function LocationSearch(props) {
   }
 
   function handleToggle(e) {
-      console.log("toggle changed", min_max_var)
-      console.log(e)
       if (e === 1) {
         min_max_var = "min"
       }
       else {
         min_max_var = "max"
       }
-      console.log("value after : ", min_max_var)
-      
   }
   async function setRoute() {
     var uri = encodeURI(
