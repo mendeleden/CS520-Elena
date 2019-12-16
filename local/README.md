@@ -1,4 +1,4 @@
-# Elevation Navigation System - Cloud Deployment Instructions
+# Elevation Navigation System - Loacl Machine Deployment Instructions
 
 
 ## Requirement
