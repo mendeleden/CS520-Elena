@@ -22,8 +22,8 @@
     * Change directory to Backend Cloud Directory : `cd CS520-Elena/cloud/Backend/`
     * Start up the container : `./run_aws.sh`
       * This script will start the docker image and expose port 8000.
-    * Install Django and Django dependencies : `./run_aws.sh`
-      * This script will start the docker image and expose port 8000.
+    * Install Django and Django dependencies : `./pip_setup.sh`
+      * This script will install django, django's dependencies and start the server.
   * Frontend : 
     * Change directory to Frontend Local Directory : `cd CS520-Elena/cloud/Frontend/`
     * Install Node.js and Npm

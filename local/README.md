@@ -19,8 +19,8 @@
     * Change directory to Backend Local Directory : `cd CS520-Elena/local/Backend/`
     * Start up the container : `./run_aws.sh`
       * This script will start the docker image and expose port 8000.
-    * Install Django and Django dependencies : `./run_aws.sh`
-      * This script will start the docker image and expose port 8000.
+    * Install Django and Django dependencies : `./pip_setup.sh`
+      * This script will install django, django's dependencies and start the server.
   * Frontend : 
     * Open a terminal on local macihne 
     * Checkout Elena Git Repo : `git clone https://github.com/mendeleden/CS520-Elena.git`
