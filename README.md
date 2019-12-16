@@ -36,7 +36,14 @@ Our web application is a fully functional routing software that allows users to 
     * Region : us-east-1
     * ec2 instance type : t2.large
     * This link will require you to add "/[address1]/[address2]/['min' or 'max']"
-
+  * Backend Data set include eastern MA towns : 
+    - Natick
+    - Framnigham 
+    - Wellesley 
+    - Needham
+    - Newton
+    - Brookline 
+    - Boston
 
 ## Set-up instructions:
   * [Deploy on AWS](https://github.com/mendeleden/CS520-Elena/tree/master/cloud)
