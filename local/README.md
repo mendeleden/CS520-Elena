@@ -1,4 +1,4 @@
-# Elevation Navigation System - Loacl Machine Deployment Instructions
+# Elevation Navigation System - Local Machine Deployment Instructions
 
 
 ## Requirement
